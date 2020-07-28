@@ -1,0 +1,36 @@
+
+
+
+
+header {
+  text-align: right;
+  color: black;
+  font-family: "Amatic SC", cursive; 
+}
+
+/* h1 {
+  font-size: 15px;
+} */
+ .container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  color: green;
+  user-select: none;
+} 
+
+
+
+
+ button {
+   
+  background-color: purple;
+  border: none;
+  color: #fdfdfd;
+ }
+
+
+
+
+
+
