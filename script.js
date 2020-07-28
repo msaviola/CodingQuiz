@@ -44,7 +44,7 @@ function setTime() {
 function renderTime() {
   
   
-  secondsDisplay.textContent = getFormattedSeconds();
+  secondsDisplay.textContent = ("Time: "+getFormattedSeconds());
 
  // ..and then checks to see if the time has run out
   if (secondsElapsed >= totalSeconds) {    
