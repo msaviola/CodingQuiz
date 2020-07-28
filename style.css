@@ -21,10 +21,18 @@ h1 {
   text-align: center;
 } 
 
+a:link, a:visited {
+    background-color: purple;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
 
 
 
- button {
+button {
    
   background-color: purple;
   border: none;

@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Josefin+Sans&display=swap" rel="stylesheet" />
@@ -12,40 +12,40 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Timer</title>
+
+    <title>Quiz</title>
 </head>
 
 <body>
-
     <div class="container">
 
         <div class="row justify-content-between">
             <div class="col-1">
-                <a href="scoreboard.html">Scoreboard</a>
+                
             </div>
 
-            <div class="col-1" id="seconds"> Time:00</div>
+            <div class="col-2" id="seconds"> Time:60</div>
 
         </div>
+        <h1>question pages</h1>
+        
 
-
-
-
-        <h1>Let's Take a Quiz!!</h1>
-        <P>Test your knowledge on basic coding knowledge. There are 5 questions, wrong answers result in time
-            deductions.
-            See who knows the most on the Scoreboard!</P>
-
-        <div class="link">
-            <a href="question.html"  id="start">Start Quiz</a>
-        </div>
+        
+            <h4 id="QuestionNumber"></h4>
+            <ul id="answerList">
+                <div class="button">
+                    <button id="answerListItem"></button>
+                </div>
+            </ul>
+        
 
     </div>
 
 
-
-
-    <script></script>
+    <script src="./script.js">
+    
+    
+    </script>
 </body>
 
 </html>
