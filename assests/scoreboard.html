@@ -25,7 +25,7 @@
 
 
 
-        <div class="row todos">
+        <div class="row scores">
             <form id="score-form" method="POST">
                 <label for="score-text">Scoreboard:</label>
                 <input type="text" placeholder="Enter your name" name="score-text" id="score-text" />
@@ -45,7 +45,7 @@
             </div>
             <div class="col-3"> </div>
 
-        </div>
+        </div> 
 
     </div>
 
@@ -63,7 +63,7 @@
         function renderScores() {
             // Clear scoreList element and update todoCountSpan
             scoreList.innerHTML = "";
-            scoreCountSpan.textContent = score.length;
+            scoreCountSpan.textContent = scores.length;
 
             // Render a new li for each todo
             for (var i = 0; i < scores.length; i++) {
@@ -84,11 +84,11 @@
         function init() {
             // Get stored todos from localStorage
             // Parsing the JSON string to an object
-            var storedScores = JSON.parse(localStorage.getItem("score"));
+            var storedScores = JSON.parse(localStorage.getItem("scores"));
 
             // If todos were retrieved from localStorage, update the todos array to it
             if (storedScores !== null) {
-                score = storedScores;
+                scores = storedScores;
             }
 
             // Render todos to the DOM
@@ -97,7 +97,7 @@
 
         function storeScores() {
             // Stringify and set "todos" key in localStorage to todos array
-            localStorage.setItem("scores", JSON.stringify(score));
+            localStorage.setItem("scores", JSON.stringify(scores));
         }
 
         // When form is submitted...
@@ -112,7 +112,7 @@
             }
 
             // Add new todoText to todos array, clear the input
-            score.push(scoreText);
+            scores.push(scoreText);
             scoreInput.value = "";
 
             // Store updated todos in localStorage, re-render the list
@@ -128,7 +128,7 @@
             if (element.matches("button") === true) {
                 // Get its data-index value and remove the todo element from the list
                 var index = element.parentElement.getAttribute("data-index");
-                score.splice(index, 1);
+                scores.splice(index, 1);
 
                 // Store updated todos in localStorage, re-render the list
                 storeScores();
