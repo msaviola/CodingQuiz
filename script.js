@@ -1,12 +1,52 @@
 
 var playButton = document.querySelector("#start");
-// var startQuiz = document.querySelector("#button");
 var secondsDisplay = document.querySelector("#seconds");
+
+var questionNumber = document.querySelector("#QuestionNumber");
+var answerList = document.querySelector("#answerList");
+var answerListItemBtn = document.querySelector("#answerListItem");
+
+var Question= ["What color is the sky?","What state has the city Los Angeles?"];
+
+var answerListItems0=["a. green", "b. blue", "c. yellow"];
+var answerListItems1=["a. CA", "b. WA", "c. NY"];
+
+
 
 
 
 var totalSeconds = 60;
 var secondsElapsed = 0;
+
+
+function printQuestion(){
+for (var i = 0; i < Question.length; i++) {
+
+  // For each drink in the array, we create a new paragraph to hold that text.
+  // A new paragraph will be created with each iteration of the loop.
+  var nextQuestionP = document.createElement("p");
+  
+
+  // We then assign the the text of this paragraph to be the text in the array.
+  nextQuestionP.textContent = Question[i];
+
+  // We then add the paragraph to the our main div on the page ("#drink-options")
+  questionNumber.appendChild(nextQuestionP);
+  renderAnswerListItems();
+}
+};
+
+
+
+function renderAnswerListItems() {
+  // Render a new li for each answer
+  
+  for (var i = 0; i < answerListItems0.length; i++) {
+    answerListItemBtn= document.createElement("li");
+    answerListItemBtn.textContent = answerListItems0[i];
+    answerList.appendChild(answerListItemBtn);
+  } 
+}
 //var interval;
 
 // This launches the app by calling setTime() and renderTime()
@@ -80,6 +120,8 @@ function stopTimer() {
 console.log("we are in script");
 
 startTimer();
+printQuestion();
+
 
 
 
