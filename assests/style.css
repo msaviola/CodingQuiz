@@ -1,12 +1,9 @@
 
-
-
-
-/* header {
+/header {
   text-align: right;
   color: black;
   font-family: "Amatic SC", cursive; 
-} */
+} 
 
 h1 {
   font-size: 15px;
@@ -17,9 +14,11 @@ h1 {
   max-width: 400px;
   margin: 0 auto;
   color: green;
-  /* user-select: none; */
+  user-select: none; 
   text-align: center;
 } 
+
+
 
 a:link, a:visited {
     background-color: purple;
@@ -38,6 +37,41 @@ button {
   border: none;
   color: #fdfdfd;
  }
+ 
+ #question{
+  width:500px;
+  height : 125px;
+  /* position: absolute;
+  right:0;
+  top:0; */
+}
+#question p{
+  margin : 0;
+  padding : 15px;
+  font-size: 1.25em;
+}
+
+#choices{
+  width : 480px;
+  /* position: absolute;
+  right : 0;
+  top : 125px;
+  padding : 10px */
+}
+.choice{
+  display: inline-block;
+  width : 135px;
+  text-align: center;
+  border : 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+  padding : 5px;
+}
+.choice:hover{
+  border : 2px solid grey;
+  font-weight: bold;
+}
+
 
 
 

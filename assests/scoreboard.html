@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Josefin+Sans&display=swap" rel="stylesheet" />
-    
+
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -20,18 +20,14 @@
     </header>
 
     <div class="container">
-
-        <h1>High Scores</h1>
-
-
-        <div class="row">
-            <li>
-                <ul>
-
-                </ul>
-            </li>
-
-        </div>
+        <div class="row todos">
+            <form id="todo-form" method="POST">
+              <label for="todo-text">Add a Todo:</label>
+              <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
+            </form>
+            <p>Todo Count: <span id="todo-count">0</span></p>
+            <ul id="todo-list"></ul>
+          </div>
 
 
         <div class="row">
@@ -49,7 +45,92 @@
     </div>
 
 
-    <script src="./script.js"></script>
+    <script>
+        var todoInput = document.querySelector("#todo-text");
+var todoForm = document.querySelector("#todo-form");
+var todoList = document.querySelector("#todo-list");
+var todoCountSpan = document.querySelector("#todo-count");
+
+var todos = [];
+
+init();
+
+function renderTodos() {
+  // Clear todoList element and update todoCountSpan
+  todoList.innerHTML = "";
+  todoCountSpan.textContent = todos.length;
+
+  // Render a new li for each todo
+  for (var i = 0; i < todos.length; i++) {
+    var todo = todos[i];
+
+    var li = document.createElement("li");
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+
+    var button = document.createElement("button");
+    button.textContent = "Complete";
+
+    li.appendChild(button);
+    todoList.appendChild(li);
+  }
+}
+
+function init() {
+  // Get stored todos from localStorage
+  // Parsing the JSON string to an object
+  var storedTodos = JSON.parse(localStorage.getItem("todos"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedTodos !== null) {
+    todos = storedTodos;
+  }
+
+  // Render todos to the DOM
+  renderTodos();
+}
+
+function storeTodos() {
+  // Stringify and set "todos" key in localStorage to todos array
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+// When form is submitted...
+todoForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var todoText = todoInput.value.trim();
+
+  // Return from function early if submitted todoText is blank
+  if (todoText === "") {
+    return;
+  }
+
+  // Add new todoText to todos array, clear the input
+  todos.push(todoText);
+  todoInput.value = "";
+
+  // Store updated todos in localStorage, re-render the list
+  storeTodos();
+  renderTodos();
+});
+
+// When a element inside of the todoList is clicked...
+todoList.addEventListener("click", function(event) {
+  var element = event.target;
+
+  // If that element is a button...
+  if (element.matches("button") === true) {
+    // Get its data-index value and remove the todo element from the list
+    var index = element.parentElement.getAttribute("data-index");
+    todos.splice(index, 1);
+
+    // Store updated todos in localStorage, re-render the list
+    storeTodos();
+    renderTodos();
+  }
+});
+    </script>
 
 </body>
 
