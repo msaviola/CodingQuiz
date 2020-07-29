@@ -20,14 +20,19 @@
     </header>
 
     <div class="container">
+
+        <h1>Scoreboard</h1>
+
+
+
         <div class="row todos">
-            <form id="todo-form" method="POST">
-              <label for="todo-text">Add a Todo:</label>
-              <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
+            <form id="score-form" method="POST">
+                <label for="score-text">Scoreboard:</label>
+                <input type="text" placeholder="Enter your name" name="score-text" id="score-text" />
             </form>
-            <p>Todo Count: <span id="todo-count">0</span></p>
-            <ul id="todo-list"></ul>
-          </div>
+            <p>Score Count: <span id="score-count">0</span></p>
+            <ul id="score-list"></ul>
+        </div>
 
 
         <div class="row">
@@ -46,90 +51,90 @@
 
 
     <script>
-        var todoInput = document.querySelector("#todo-text");
-var todoForm = document.querySelector("#todo-form");
-var todoList = document.querySelector("#todo-list");
-var todoCountSpan = document.querySelector("#todo-count");
+        var scoreInput = document.querySelector("#score-text");
+        var scoreForm = document.querySelector("#score-form");
+        var scoreList = document.querySelector("#score-list");
+        var scoreSpan = document.querySelector("#score-count");
 
-var todos = [];
+        var scores = [];
 
-init();
+        init();
 
-function renderTodos() {
-  // Clear todoList element and update todoCountSpan
-  todoList.innerHTML = "";
-  todoCountSpan.textContent = todos.length;
+        function renderScores() {
+            // Clear scoreList element and update todoCountSpan
+            scoreList.innerHTML = "";
+            scoreCountSpan.textContent = score.length;
 
-  // Render a new li for each todo
-  for (var i = 0; i < todos.length; i++) {
-    var todo = todos[i];
+            // Render a new li for each todo
+            for (var i = 0; i < scores.length; i++) {
+                var score = scores[i];
 
-    var li = document.createElement("li");
-    li.textContent = todo;
-    li.setAttribute("data-index", i);
+                var li = document.createElement("li");
+                li.textContent = score;
+                li.setAttribute("data-index", i);
 
-    var button = document.createElement("button");
-    button.textContent = "Complete";
+                var button = document.createElement("button");
+                button.textContent = "Complete";
 
-    li.appendChild(button);
-    todoList.appendChild(li);
-  }
-}
+                li.appendChild(button);
+                scoreList.appendChild(li);
+            }
+        }
 
-function init() {
-  // Get stored todos from localStorage
-  // Parsing the JSON string to an object
-  var storedTodos = JSON.parse(localStorage.getItem("todos"));
+        function init() {
+            // Get stored todos from localStorage
+            // Parsing the JSON string to an object
+            var storedScores = JSON.parse(localStorage.getItem("score"));
 
-  // If todos were retrieved from localStorage, update the todos array to it
-  if (storedTodos !== null) {
-    todos = storedTodos;
-  }
+            // If todos were retrieved from localStorage, update the todos array to it
+            if (storedScores !== null) {
+                score = storedScores;
+            }
 
-  // Render todos to the DOM
-  renderTodos();
-}
+            // Render todos to the DOM
+            renderScores();
+        }
 
-function storeTodos() {
-  // Stringify and set "todos" key in localStorage to todos array
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
+        function storeScores() {
+            // Stringify and set "todos" key in localStorage to todos array
+            localStorage.setItem("scores", JSON.stringify(score));
+        }
 
-// When form is submitted...
-todoForm.addEventListener("submit", function(event) {
-  event.preventDefault();
+        // When form is submitted...
+        scoreForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-  var todoText = todoInput.value.trim();
+            var scoreText = scoreInput.value.trim();
 
-  // Return from function early if submitted todoText is blank
-  if (todoText === "") {
-    return;
-  }
+            // Return from function early if submitted todoText is blank
+            if (scoreText === "") {
+                return;
+            }
 
-  // Add new todoText to todos array, clear the input
-  todos.push(todoText);
-  todoInput.value = "";
+            // Add new todoText to todos array, clear the input
+            score.push(scoreText);
+            scoreInput.value = "";
 
-  // Store updated todos in localStorage, re-render the list
-  storeTodos();
-  renderTodos();
-});
+            // Store updated todos in localStorage, re-render the list
+            storeScores();
+            renderScores();
+        });
 
-// When a element inside of the todoList is clicked...
-todoList.addEventListener("click", function(event) {
-  var element = event.target;
+        // When a element inside of the scoreList is clicked...
+        scoreList.addEventListener("click", function (event) {
+            var element = event.target;
 
-  // If that element is a button...
-  if (element.matches("button") === true) {
-    // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("data-index");
-    todos.splice(index, 1);
+            // If that element is a button...
+            if (element.matches("button") === true) {
+                // Get its data-index value and remove the todo element from the list
+                var index = element.parentElement.getAttribute("data-index");
+                score.splice(index, 1);
 
-    // Store updated todos in localStorage, re-render the list
-    storeTodos();
-    renderTodos();
-  }
-});
+                // Store updated todos in localStorage, re-render the list
+                storeScores();
+                renderScores();
+            }
+        });
     </script>
 
 </body>
