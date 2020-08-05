@@ -14,6 +14,10 @@ const choiceC = document.getElementById("C");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
+
+var totalSeconds = 60;
+var secondsElapsed = 0;
+
 // create our questions
 let questions = [
   {
@@ -69,7 +73,7 @@ function startQuiz(){
   
   renderQuestion();
   
-  renderProgress();
+  //renderProgress();
   renderCounter();
   scoreRender();
   console.log("end of quiz");
@@ -77,11 +81,11 @@ function startQuiz(){
 }
 
 //render progress
-function renderProgress(){
-  for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-      progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-  }
-}
+// function renderProgress(){
+//   for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+//       progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+//   }
+// }
 // counter render
 
 function renderCounter(){
@@ -113,11 +117,11 @@ function checkAnswer(answer){
       // answer is correct
       score++;
       // change progress color to green
-      answerIsCorrect();
+     // answerIsCorrect();
   }else{
       // answer is wrong
       // change progress color to red
-      answerIsWrong();
+      //answerIsWrong();
       secondsElapsed=secondsElapsed+10;
   }
   count = 0;
@@ -133,15 +137,15 @@ function checkAnswer(answer){
   }
 }
 
-// answer is correct
-function answerIsCorrect(){
-  document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
-}
+// // answer is correct
+// function answerIsCorrect(){
+//   document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+// }
 
-// answer is Wrong
-function answerIsWrong(){
-  document.getElementById(runningQuestion).style.backgroundColor = "#f00";
-}
+// // answer is Wrong
+// function answerIsWrong(){
+//   document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+// }
 
 // score render
 function scoreRender(){
@@ -160,8 +164,6 @@ function scoreRender(){
 
 
 
-var totalSeconds = 60;
-var secondsElapsed = 0;
 
 
 // function printQuestion(){
@@ -215,7 +217,7 @@ function getFormattedSeconds() {
 
 function setTime() {
   
-    totalSeconds = 60;
+    totalSeconds = totalSeconds-secondsElapsed;
   }
 
 // This function does 2 things. displays the time and checks to see if time is up.
