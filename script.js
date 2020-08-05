@@ -73,7 +73,7 @@ function startQuiz(){
   
   renderQuestion();
   
-  //renderProgress();
+  renderProgress();
   renderCounter();
   scoreRender();
   console.log("end of quiz");
@@ -81,11 +81,12 @@ function startQuiz(){
 }
 
 //render progress
-// function renderProgress(){
-//   for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-//       progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-//   }
-// }
+function renderProgress(){
+  for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+      progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+  }
+}
+
 // counter render
 
 function renderCounter(){
@@ -159,30 +160,6 @@ function scoreRender(){
   alert(scoreDiv);
   console.log("you finished, we are gathering your score");
 }
-
-
-
-
-
-
-
-// function printQuestion(){
-// for (var i = 0; i < Question.length; i++) {
-
-//   // For each drink in the array, we create a new paragraph to hold that text.
-//   // A new paragraph will be created with each iteration of the loop.
-//   var nextQuestionP = document.createElement("p");
-  
-
-//   // We then assign the the text of this paragraph to be the text in the array.
-//   nextQuestionP.textContent = Question[i];
-
-//   // We then add the paragraph to the our main div on the page ("#drink-options")
-//   questionNumber.appendChild(nextQuestionP);
-//   renderAnswerListItems();
-// }
-// };
-
 
 
 // function renderAnswerListItems() {
@@ -267,7 +244,7 @@ console.log("we are in script");
 
 startTimer();
 startQuiz();
-//printQuestion();
+
 
 
 
