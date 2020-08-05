@@ -1,3 +1,4 @@
+
 var playButton = document.querySelector("#start");
 var secondsDisplay = document.querySelector("#seconds");
 
@@ -92,6 +93,8 @@ function renderCounter(){
       count = 0;
       // change progress color to red
       answerIsWrong();
+      secondsElapsed=secondsElapsed+10;
+  
       if(runningQuestion < lastQuestion){
           runningQuestion++;
           renderQuestion();
@@ -115,6 +118,7 @@ function checkAnswer(answer){
       // answer is wrong
       // change progress color to red
       answerIsWrong();
+      secondsElapsed=secondsElapsed+10;
   }
   count = 0;
   if(runningQuestion < lastQuestion){
@@ -124,6 +128,8 @@ function checkAnswer(answer){
       // end the quiz and show the score
       //clearInterval(TIMER);
       scoreRender();
+      
+
   }
 }
 
@@ -139,7 +145,7 @@ function answerIsWrong(){
 
 // score render
 function scoreRender(){
-  //scoreDiv.style.display = "block";
+  scoreDiv.style.display = "block";
   
   // calculate the amount of question percent answered by the user
   var scorePerCent = Math.round(100 * score/questions.length);
@@ -250,7 +256,7 @@ function startTimer() {
 function stopTimer() {
   secondsElapsed = 0;
   alert("Time is Up!");
-  alert("Your score is:");
+  alert("Your score is:" +scoreDiv);
 
 }
 
@@ -260,4 +266,7 @@ console.log("we are in script");
 startTimer();
 startQuiz();
 //printQuestion();
+
+
+
 
