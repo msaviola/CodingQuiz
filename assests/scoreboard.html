@@ -25,12 +25,15 @@
 
 
 
-        <div class="row scores">
+        <div class="row">
             <form id="score-form" method="POST">
                 <label for="score-text">Scoreboard:</label>
                 <input type="text" placeholder="Enter your name" name="score-text" id="score-text" />
             </form>
-            <p>Score Count: <span id="score-count">0</span></p>
+            <!-- <p>Score Count: <span id="score-count">0</span></p> -->
+        </div>
+
+        <div class="row">
             <ul id="score-list"></ul>
         </div>
 
@@ -41,100 +44,74 @@
                 <a href="../index.html" id="back">go back</a>
             </div>
             <div class="col-3">
-                <button id="clear scores">clear scores</button>
+                <button id="clear">clear scores</button>
             </div>
             <div class="col-3"> </div>
 
-        </div> 
+        </div>
 
     </div>
 
 
     <script>
-        var scoreInput = document.querySelector("#score-text");
-        var scoreForm = document.querySelector("#score-form");
-        var scoreList = document.querySelector("#score-list");
-        var scoreSpan = document.querySelector("#score-count");
+        // var scoreInput = document.querySelector("#score-text");
+        // var scoreForm = document.querySelector("#score-form");
+        // var scoreList = document.querySelector("#score-list");
+        // var scoreSpan = document.querySelector("#score-count");
 
-        var scores = [];
+        // var scores = [];
 
-        init();
+        var todoInput = document.querySelector("#score-text");
+        var todoForm = document.querySelector("#score-form");
+        var todoList = document.querySelector("#score-list");
+        //var todoCountSpan = document.querySelector("#score-count");
 
-        function renderScores() {
-            // Clear scoreList element and update todoCountSpan
-            scoreList.innerHTML = "";
-            scoreCountSpan.textContent = scores.length;
+        var todos = [];
+
+        renderTodos();
+
+        function renderTodos() {
+            // Clear todoList element and update todoCountSpan
+            todoList.innerHTML = "";
+           // todoCountSpan.textContent = todos.length;
 
             // Render a new li for each todo
-            for (var i = 0; i < scores.length; i++) {
-                var score = scores[i];
+            for (var i = 0; i < todos.length; i++) {
+                var todo = todos[i];
 
                 var li = document.createElement("li");
-                li.textContent = score;
-                li.setAttribute("data-index", i);
-
-                var button = document.createElement("button");
-                button.textContent = "Complete";
-
-                li.appendChild(button);
-                scoreList.appendChild(li);
+                li.textContent = todo;
+                todoList.appendChild(li);
             }
-        }
-
-        function init() {
-            // Get stored todos from localStorage
-            // Parsing the JSON string to an object
-            var storedScores = JSON.parse(localStorage.getItem("scores"));
-
-            // If todos were retrieved from localStorage, update the todos array to it
-            if (storedScores !== null) {
-                scores = storedScores;
-            }
-
-            // Render todos to the DOM
-            renderScores();
-        }
-
-        function storeScores() {
-            // Stringify and set "todos" key in localStorage to todos array
-            localStorage.setItem("scores", JSON.stringify(scores));
         }
 
         // When form is submitted...
-        scoreForm.addEventListener("submit", function (event) {
+        todoForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            var scoreText = scoreInput.value.trim();
+            var todoText = todoInput.value.trim();
 
             // Return from function early if submitted todoText is blank
-            if (scoreText === "") {
+            if (todoText === "") {
                 return;
             }
 
             // Add new todoText to todos array, clear the input
-            scores.push(scoreText);
-            scoreInput.value = "";
+            todos.push(todoText);
+            todoInput.value = "";
 
-            // Store updated todos in localStorage, re-render the list
-            storeScores();
-            renderScores();
+            // Re-render the list
+            renderTodos();
         });
 
-        // When a element inside of the scoreList is clicked...
-        scoreList.addEventListener("click", function (event) {
-            var element = event.target;
+        // clear.addEventListener("click", function(event) {
+        //     todos="";
 
-            // If that element is a button...
-            if (element.matches("button") === true) {
-                // Get its data-index value and remove the todo element from the list
-                var index = element.parentElement.getAttribute("data-index");
-                scores.splice(index, 1);
+        // }
 
-                // Store updated todos in localStorage, re-render the list
-                storeScores();
-                renderScores();
-            }
-        });
+
+
+
     </script>
 
 </body>

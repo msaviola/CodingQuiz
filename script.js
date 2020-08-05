@@ -1,4 +1,3 @@
-
 var playButton = document.querySelector("#start");
 var secondsDisplay = document.querySelector("#seconds");
 
@@ -261,7 +260,4 @@ console.log("we are in script");
 startTimer();
 startQuiz();
 //printQuestion();
-
-
-
 

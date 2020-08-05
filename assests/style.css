@@ -41,9 +41,9 @@ button {
  #question{
   width:500px;
   height : 125px;
-  /* position: absolute;
+ /*  position: absolute;
   right:0;
-  top:0; */
+  top:0; */ 
 }
 #question p{
   margin : 0;
