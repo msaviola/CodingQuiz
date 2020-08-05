@@ -28,14 +28,14 @@
 
         <div class="todos">
             <form id="todo-form" method="POST">
-                <label for="todo-text">Add a Todo:</label>
-                <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
+                <label for="todo-text">Socres:</label>
+                <input type="text" placeholder="Enter you name" name="todo-text" id="todo-text" />
             </form>
             <!-- <p>Todo Count: <span id="todo-count">0</span></p> -->
             <ul id="todo-list"></ul>
         </div>
 
-       
+
 
 
         <div class="row">
@@ -62,9 +62,9 @@
         var clear = document.querySelector("#clear");
 
         var todos = [];
-        
 
-        
+
+
 
         init();
 
@@ -88,6 +88,8 @@
                 // li.appendChild(button);
                 todoList.appendChild(li);
             }
+            console.log(todos);
+
         }
 
 
@@ -102,14 +104,14 @@
             }
 
             // Render todos to the DOM
+            storeTodos();
             renderTodos();
         }
 
-        
         function storeTodos() {
             // Stringify and set "todos" key in localStorage to todos array
             localStorage.setItem("todos", JSON.stringify(todos));
-            console.log(localStorage);
+            console.log(todos);
         }
 
         // When form is submitted...
@@ -122,10 +124,12 @@
             // Return from function early if submitted todoText is blank
             if (todoText === "") {
                 return;
-                    }
+            }
 
             // Add new todoText to todos array, clear the input
-            todos= todos + todoText;
+            // todos= todos + todoText;
+            // todoInput.value = "";
+            todos.push(todoText);
             todoInput.value = "";
 
             // Store updated todos in localStorage, re-render the list
@@ -133,14 +137,13 @@
             renderTodos();
         });
 
-        clear.addEventListener("click", function(event){
-            todos = [];
-            
+        clear.addEventListener("click", function (event) {
+            todos=[""];
+
             console.log("clear todos");
             console.log(todos);
-           
-            storeTodos();
-            renderTodos;
+
+            init();
         })
 
 
