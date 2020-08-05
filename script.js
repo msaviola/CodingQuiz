@@ -116,6 +116,7 @@ function checkAnswer(answer){
       // answer is wrong
       // change progress color to red
       answerIsWrong();
+      // You're so close! All you need to do is add to the elapsed time. -C
   }
   count = 0;
   if(runningQuestion < lastQuestion){
